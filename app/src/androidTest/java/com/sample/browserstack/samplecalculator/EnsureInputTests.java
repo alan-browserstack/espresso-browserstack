@@ -38,18 +38,18 @@ public class EnsureInputTests {
 
     @Test
     public void ensureSingleInputIsHandled() {
-        Spoon.screenshot(mainActivity, "initial_state");
+        // Spoon.screenshot(mainActivity, "initial_state");
         onView(withId(R.id.buttonOne)).perform(click());
         onView(withId(R.id.editText)).check(matches(withText("1")));
-        Spoon.screenshot(mainActivity, "post_multiple_btn_click");
+        // Spoon.screenshot(mainActivity, "post_multiple_btn_click");
     }
 
     @Test
     public void ensureMultipleInputIsHandled() {
-        Spoon.screenshot(mainActivity, "initial_state");
+        // Spoon.screenshot(mainActivity, "initial_state");
         onView(withId(R.id.buttonOne)).perform(click());
         onView(withId(R.id.buttonTwo)).perform(click());
         onView(withId(R.id.editText)).check(matches(withText("12")));
-        Spoon.screenshot(mainActivity, "post_multiple_btn_click");
+        // Spoon.screenshot(mainActivity, "post_multiple_btn_click");
     }
 }

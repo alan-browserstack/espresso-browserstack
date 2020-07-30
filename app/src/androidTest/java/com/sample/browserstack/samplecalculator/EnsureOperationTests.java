@@ -17,8 +17,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import com.squareup.spoon.Spoon;
 
 /**
- * Espresso tests to ensure that simple operations result in
- * correct output when the number & operations buttons are clicked
+ * Espresso tests to ensure that simple operations result in correct output when
+ * the number & operations buttons are clicked
  */
 
 @MediumTest
@@ -26,8 +26,7 @@ import com.squareup.spoon.Spoon;
 public class EnsureOperationTests {
 
     @Rule
-    public ActivityTestRule<MainActivity> activityRule =
-            new ActivityTestRule<MainActivity>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<MainActivity>(MainActivity.class);
 
     private MainActivity mainActivity;
 
@@ -35,7 +34,6 @@ public class EnsureOperationTests {
     public void setUp() {
         mainActivity = activityRule.getActivity();
     }
-
 
     @Test
     public void ensureAdditionWorks() {
@@ -46,7 +44,7 @@ public class EnsureOperationTests {
         onView(withId(R.id.buttonOne)).perform(click());
         onView(withId(R.id.buttonEqual)).perform(click());
         onView(withId(R.id.editText)).check(matches(withText("33")));
-        Spoon.screenshot(mainActivity, "post_addition");
+        // Spoon.screenshot(mainActivity, "post_addition");
     }
 
     @Test
@@ -58,7 +56,7 @@ public class EnsureOperationTests {
         onView(withId(R.id.buttonOne)).perform(click());
         onView(withId(R.id.buttonEqual)).perform(click());
         onView(withId(R.id.editText)).check(matches(withText("11")));
-        Spoon.screenshot(mainActivity, "post_subtraction");
+        // Spoon.screenshot(mainActivity, "post_subtraction");
     }
 
     @Test
@@ -69,7 +67,7 @@ public class EnsureOperationTests {
         onView(withId(R.id.buttonFive)).perform(click());
         onView(withId(R.id.buttonEqual)).perform(click());
         onView(withId(R.id.editText)).check(matches(withText("60")));
-        Spoon.screenshot(mainActivity, "post_multiplication");
+        // Spoon.screenshot(mainActivity, "post_multiplication");
     }
 
     @Test
@@ -80,6 +78,6 @@ public class EnsureOperationTests {
         onView(withId(R.id.buttonThree)).perform(click());
         onView(withId(R.id.buttonEqual)).perform(click());
         onView(withId(R.id.editText)).check(matches(withText("4")));
-        Spoon.screenshot(mainActivity, "post_division");
+        // Spoon.screenshot(mainActivity, "post_division");
     }
 }

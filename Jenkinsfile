@@ -39,9 +39,7 @@ pipeline {
         stage('Upload test suite to BrowserStack for execution') {
             steps {
                 sh "browserstack app-automate espresso run --app=${PATH_TO_APP_APK} --testSuite=${PATH_TO_ANDROID_TEST_APK} --devices=\"Google Pixel 3-10.0\""
-                echo 'View your test suite:'
-                echo ''
-                echo 'https://app-automate.browserstack.com/dashboard/v2'
+                echo 'View your test suite: https://app-automate.browserstack.com/dashboard/v2'
             }
         }
     }

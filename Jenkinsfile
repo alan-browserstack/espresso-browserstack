@@ -3,6 +3,7 @@ pipeline {
     agent any
 
     environment {
+        ANDROID_SDK_ROOT="/Users/alangrubb/Library/Android/sdk"
         PATH = "/usr/local/bin:/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/opt/ruby/bin:$PATH"
         PATH_TO_APP_APK = "/Users/alangrubb/workspace/espresso-browserstack/app/build/outputs/apk/debug/app-debug.apk"
         PATH_TO_ANDROID_TEST_APK = "/Users/alangrubb/workspace/espresso-browserstack/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"

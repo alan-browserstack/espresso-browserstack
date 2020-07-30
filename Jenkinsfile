@@ -10,10 +10,11 @@ pipeline {
     }
 
     stages {
-        stage('Check ENV') {
+        stage('Check ENV and get browserstack cli') {
             steps {
                 echo "username: ${BROWSERSTACK_USERNAME}"
                 echo "key: ${BROWSERSTACK_ACCESS_KEY}"
+                sh "browserstack authenticate --username=${BROWSERSTACK_USERNAME} --access-key=${BROWSERSTACK_ACCESS_KEY}"
             }
         }
 
@@ -35,21 +36,27 @@ pipeline {
             }
         }
 
-        stage('Upload App apk to BrowserStack') {
+        stage('BrowserStack CLI to Run Tests') {
             steps {
-                sh "curl -u \"${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}\" \
-                    -X POST \"https://api-cloud.browserstack.com/app-automate/upload\" \
-                    -F \"file=@${PATH_TO_APP_APK}\""
+                sh "browserstack app-automate espresso run --app=${PATH_TO_APP_APL} --testSuite=${PATH_TO_ANDROID_TEST_APK}"
             }
         }
 
-        stage('Upload androidTest apk to BrowserStack') {
-            steps {
-                sh "curl -u \"alangrubb2:ndfaSQAUFEm7oyk23Uyk\" \
-                    -X POST \"https://api-cloud.browserstack.com/app-automate/espresso/test-suite\" \
-                    -F \"file=@${PATH_TO_ANDROID_TEST_APK}\""
-            }
-        }
+        // stage('Upload App apk to BrowserStack') {
+        //     steps {
+        //         sh "curl -u \"${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}\" \
+        //             -X POST \"https://api-cloud.browserstack.com/app-automate/upload\" \
+        //             -F \"file=@${PATH_TO_APP_APK}\""
+        //     }
+        // }
+
+        // stage('Upload androidTest apk to BrowserStack') {
+        //     steps {
+        //         sh "curl -u \"alangrubb2:ndfaSQAUFEm7oyk23Uyk\" \
+        //             -X POST \"https://api-cloud.browserstack.com/app-automate/espresso/test-suite\" \
+        //             -F \"file=@${PATH_TO_ANDROID_TEST_APK}\""
+        //     }
+        // }
 
         // stage('Execute tests on BrowserStack') {
         //     steps {

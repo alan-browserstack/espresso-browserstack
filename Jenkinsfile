@@ -38,7 +38,7 @@ pipeline {
 
         stage('BrowserStack CLI to Run Tests') {
             steps {
-                sh "browserstack app-automate espresso run --app=${PATH_TO_APP_APK} --testSuite=${PATH_TO_ANDROID_TEST_APK} --devices="Google Pixel 3"
+                sh "browserstack app-automate espresso run --app=${PATH_TO_APP_APK} --testSuite=${PATH_TO_ANDROID_TEST_APK} --devices=\"Google Pixel 3\""
             }
         }
 

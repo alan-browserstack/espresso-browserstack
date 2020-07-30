@@ -36,32 +36,13 @@ pipeline {
             }
         }
 
-        stage('BrowserStack CLI to Run Tests') {
+        stage('Upload test suite to BrowserStack for execution') {
             steps {
                 sh "browserstack app-automate espresso run --app=${PATH_TO_APP_APK} --testSuite=${PATH_TO_ANDROID_TEST_APK} --devices=\"Google Pixel 3-10.0\""
+                echo 'View your test suite:'
+                echo ''
+                echo 'https://app-automate.browserstack.com/dashboard/v2'
             }
         }
-
-        // stage('Upload App apk to BrowserStack') {
-        //     steps {
-        //         sh "curl -u \"${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}\" \
-        //             -X POST \"https://api-cloud.browserstack.com/app-automate/upload\" \
-        //             -F \"file=@${PATH_TO_APP_APK}\""
-        //     }
-        // }
-
-        // stage('Upload androidTest apk to BrowserStack') {
-        //     steps {
-        //         sh "curl -u \"alangrubb2:ndfaSQAUFEm7oyk23Uyk\" \
-        //             -X POST \"https://api-cloud.browserstack.com/app-automate/espresso/test-suite\" \
-        //             -F \"file=@${PATH_TO_ANDROID_TEST_APK}\""
-        //     }
-        // }
-
-        // stage('Execute tests on BrowserStack') {
-        //     steps {
-        //         sh 'npm run ios'
-        //     }
-        // }
     }
 }
